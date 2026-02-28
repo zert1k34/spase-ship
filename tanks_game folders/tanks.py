@@ -7,7 +7,7 @@ pygame.init()
 
 width, height = 600, 400
 screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption("Simple Pygame Game")
+pygame.display.set_caption("world of tanks(8 bit)")
 
 clock = pygame.time.Clock()
 FONT = pygame.font.SysFont(None, 36)
@@ -31,13 +31,13 @@ def draw_text(text, x, y):
     img = FONT.render(text, True, (255, 255, 255))
     screen.blit(img, (x, y))
 
-running = True
-while running:
+close_time = True
+while close_time:
     clock.tick(60)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            close_time = False
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and player_x > 0:
@@ -65,7 +65,7 @@ while running:
 
     if player_rect.colliderect(enemy_rect):
         print("Game over! Final score:", score)
-        running = False
+        close_time = False
 
 
     screen.fill((30,30,30))
